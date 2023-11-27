@@ -1,33 +1,153 @@
 
 
-.navigation{
+.navbar {
     display: flex;
     justify-content: space-between;
-    background-color: antiquewhite;
-
+    align-items: center;
+    background-color: #ffffff;
+    padding: 10px;
+    color: rgb(0, 0, 0);
 }
 
-@media (max-width: 700px) {
-    .navigation {
-      display: grid;
-      grid-auto-flow: row;
+.logo {
+    font-size: 1.5em;
+}
+
+.menu {
+    display: flex;
+    flex-direction: row;
+}
+
+.menu a {
+    color: rgb(0, 0, 0);
+    font-size: larger;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.shoppingcart{
+    font-size: 28px;
+}
+
+.hamburger {
+    font-size: 1.5em;
+    cursor: pointer;
+    display: none;
+}
+
+@media only screen and (max-width: 700px) {
+
+    .navbar{
+        text-align: center;
     }
-  }
-  
-  @media (min-width: 701px) {
-    .navigation {
-      width: min(1000px,75rem);
-      margin: 0 auto;
-      grid-auto-flow: column;
-      gap: 1em;
+    .menu {
+
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: #ffffff;
     }
-  }
+
+    .menu.open {
+        display: flex;
+    }
+
+    .hamburger {
+        display: block;
+    }
+}
 
 
+/* //////////////// Main /////////////// */
 
-
-
-
-  .mainspace{
+body{
     background-color: #495E57;
-  }
+}
+
+.littleLemon{
+    padding: 10px;
+    color: #F4CE14;
+    font-size: 64px;
+    font-weight: 500;
+    word-wrap: break-word;
+}
+
+.chicago{
+    padding: 10px;
+    color: #EDEFEE;
+    font-size: 30px;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.FindTable{
+    text-align: center;
+    padding: 20px;
+    color: #FFF;
+    font-size: 22px;
+}
+
+.resturantPic{
+    display: flex;
+    justify-content: space-around;
+}
+.resturanrImage{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 45%;
+    border-radius: 15px;
+}
+
+.tableReservation{
+    color: #FFF;
+}
+
+.tableReservation .inputDate{
+    width: 30%;
+    border-radius: 7px;
+    padding: 7px;
+    margin: 10px;
+}
+
+.tableReservation select{
+    width: 65%;
+    padding: 7px;
+    background-color: #FFF;
+    border-radius: 7px;
+    margin: 10px;
+}
+
+.Seating{
+    color: #FFF;
+    font-size: 18px;
+    padding-bottom: 10px;
+}
+
+.SeatingOption{
+    padding: 20px;
+    display:grid;
+}
+
+
+.SeatingOption div{
+    margin: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.submitButton{
+    background-color:#F4CE14;
+    border-radius: 20px;
+    color: black;
+    text-align: center;
+    font-size: 24px;
+    padding-left: 80px;
+    padding-right: 80px;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    border: 0;
+    margin: 20px;
+}
