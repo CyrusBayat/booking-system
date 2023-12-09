@@ -1,8 +1,22 @@
+import React, { useState } from 'react';
 
+
+
+const CustomAlert = ({ message, color }) => (
+    <div style={{ backgroundColor: color, padding: '10px', textAlign: 'center', color: 'white', fontSize:"25px" }}>
+        {message}
+    </div>
+);
 
 function BookingPage(props) {
 
-
+    const [errors, setErrors] = useState({
+        date: '',
+        time: '',
+        numberOfGuests: '',
+        partyName: '',
+        seatOption: '',
+    });
 
     const populateFutureDates = () => {
         const currentDate = new Date();
@@ -40,17 +54,62 @@ function BookingPage(props) {
         });
     };
 
-
+    const [alert, setAlert] = useState({
+        message: '',
+        color: '',
+    });
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        const newErrors = {};
+
+        if (!props.formData.date) {
+            newErrors.date = 'Please select a date';
+        }
+
+        if (!props.formData.time) {
+            newErrors.time = 'Please select a time';
+        }
+
+        if (!props.formData.numberOfGuests) {
+            newErrors.numberOfGuests = 'Please select the number of diners';
+        }
+
+        if (!props.formData.partyName) {
+            newErrors.partyName = 'Please select an occasion';
+        }
+
+        if (!props.formData.seatOption) {
+            newErrors.seatOption = 'Please select a seating option';
+        }
+        setErrors(newErrors);
+        if (Object.keys(newErrors).length > 0) {
+            return;
+        }
+
+
+        props.submition();
+
+        setAlert({
+            message: 'Your Table is successfully reserved for ' + props.formData.date + " at " + props.formData.time,
+            color: 'green',
+        });
+        props.setFormData({
+            date: '',
+            time: '',
+            numberOfGuests: '',
+            partyName: '',
+            seatOption: '',
+        });
+
+
+
     };
 
-    // console.log(props.initializeTimes)
 
     return (
         <form className="tableReservation" onSubmit={handleSubmit}>
-
+            {alert.message && <CustomAlert message={alert.message} color={alert.color} />}
             <div style={{ textAlign: 'center' }}>
                 <select className="inputDate" name="date" value={props.formData.date} onChange={handleChange}>
                     <option value="" disabled>Select a Date</option>
@@ -60,7 +119,6 @@ function BookingPage(props) {
                         </option>
                     ))}
                 </select>
-
 
                 <select className="inputDate" name="time" value={props.formData.time} onChange={handleChange}>
                     <option value="">Select Time</option>
@@ -112,13 +170,23 @@ function BookingPage(props) {
                     </div>
                 ))}
             </div>
+            <div style={{ color: 'orange', textAlign: 'center', fontSize: "20px" }}>
+                {errors.date && <p >{errors.date}</p>}
+                {errors.time && <p >{errors.time}</p>}
+                {errors.numberOfGuests && <p >{errors.numberOfGuests}</p>}
+                {errors.partyName && <p >{errors.partyName}</p>}
+                {errors.seatOption && <p >{errors.seatOption}</p>}
+
+            </div>
 
 
             <div style={{ textAlign: 'center' }}>
-                <button type="submit" className="submitButton">
+                <button type="submit" className="submitButton" disabled={!!alert.message}>
                     Let's go
                 </button>
             </div>
+
+            {/* <p>{props.formData.seatOption}</p> */}
 
         </form>
     );

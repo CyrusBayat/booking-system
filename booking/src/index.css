@@ -6,3 +6,46 @@
 }
 
 
+.Home {
+    display: flex;
+    justify-content: center;
+}
+
+.text{
+    color: white;
+    padding: 0 20px 10px 20px;
+    font-size: 17px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+  .homeIntro {
+    background-color: #495E57;
+    max-height: 500px;
+  }
+
+  .img-container {
+    display: flex;
+    overflow: hidden;
+    border-radius: 5rem;
+    margin: 100px 0 50px 100px;
+  }
+
+@media only screen and (max-width:  600px) {
+    .Home {
+      flex-direction: column;
+      align-items: center;
+    }
+    .homeIntro{
+        text-align: center;
+    }
+
+    .img-container {
+        height: 250px;
+        max-width: 100%;
+        width: 70%;
+        margin: 20px 0;
+        border-radius: 50px;
+    }
+}

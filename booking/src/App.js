@@ -1,28 +1,40 @@
 import './App.css';
+import Footer from './Components/Footer/Footer';
+import HomeMain from './Components/Main/HomeMain';
 import Main from './Components/Main/Main';
 import Navbar from './Components/Navbar/Navbar';
+import PageNotReady from './Components/PageNotReady';
+import { Routes, Route } from 'react-router-dom'
+
+
 
 function App() {
-  
-  return (
-    <div >
 
-      <header>
-      </header>
+    return (
+        <div >
 
-      <nav>
-        <Navbar />
-      </nav>
+            <header>
+            </header>
 
-      <main>
-        <Main />
-      </main>
+            <nav>
+                <Navbar />
+            </nav>
 
-      <footer></footer>
+            <main>
+                <Routes>
+                    <Route path='/' element={<HomeMain />} />
+                    <Route path='/Main' element={<Main />} />
+                    <Route path='/PageNotReady' element={<PageNotReady />} />
+
+                </Routes>
+            </main>
+            
+
+            <footer><Footer /></footer>
 
 
-    </div>
-  );
+        </div>
+    );
 }
 
 export default App;
